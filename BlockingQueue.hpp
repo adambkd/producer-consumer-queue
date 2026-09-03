@@ -26,6 +26,11 @@ class BlockingQueue {
             return queue_.size();
         }
 
-        bool isEmpty() const;
-        bool isFull() const;
+        bool isEmpty() const {
+            return queue_.size() == 0;
+        }
+
+        bool isFull() const {
+            return queue_.size() == capacity_;
+        }
 };
