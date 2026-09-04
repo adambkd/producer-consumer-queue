@@ -2,6 +2,7 @@
 #include <queue>
 #include <mutex>
 #include <condition_variable>
+#include <stdexcept>
 
 template<typename T>
 class BlockingQueue {
@@ -28,7 +29,11 @@ class BlockingQueue {
         }
 
     public:
-        explicit BlockingQueue(size_t capacity) : capacity_(capacity) {}
+        explicit BlockingQueue(size_t capacity) : capacity_(capacity) {
+            if (capacity == 0) {
+                throw std::invalid_argument("Capacity cannot be 0");
+            }
+        }
 
         void enqueue(const T& value) {
             std::unique_lock<std::mutex> ul(mutex_);
