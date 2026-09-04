@@ -8,7 +8,7 @@ template<typename T>
 class BlockingQueue {
     private:
         std::queue<T> queue_;
-        size_t capacity_;
+        std::size_t capacity_;
 
         std::mutex mutex_;
 
