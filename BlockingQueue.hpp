@@ -29,7 +29,7 @@ class BlockingQueue {
         }
 
     public:
-        explicit BlockingQueue(size_t capacity) : capacity_(capacity) {
+        explicit BlockingQueue(std::size_t capacity) : capacity_(capacity) {
             if (capacity == 0) {
                 throw std::invalid_argument("Capacity cannot be 0");
             }
